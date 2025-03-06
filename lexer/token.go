@@ -1,5 +1,7 @@
 package lexer
 
+import "fmt"
+
 type TokenType string
 
 const (
@@ -51,3 +53,14 @@ const (
 
 	EOF TokenType = "EOF"
 )
+
+type Token struct {
+	Type    TokenType
+	Lexeme  string
+	Literal any
+	Line    int
+}
+
+func (t Token) String() string {
+	return fmt.Sprintf("%s %s %v", t.Type, t.Lexeme, t.Literal)
+}
